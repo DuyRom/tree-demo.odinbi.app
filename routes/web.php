@@ -14,9 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('apps.home');
 });
 
 
 
 Route::view('/tree','demo.tree');
+
+Route::view('/main','main');
