@@ -50,7 +50,13 @@
                                         </tr>
                                     </thead>
                                       <tbody>
-                                      	
+                                      	@foreach($objectives as $objective)
+                                      	<tr class="treegrid-{{$objective['id']}} treegrid-parent-{{$objective['parent_id']}}">
+									    	<td>{{$objective['name']}}</td>
+									    	<td>Additional info</td>
+									    	<td>Additional add</td>
+									    </tr>
+                                 		@endforeach
 									  </tbody>
                                 </table>
                             </div>
@@ -63,23 +69,12 @@
     </div>
 @endsection
 @push('pageJS')
-	<!-- <script src="/demo/bootstrap/js/bootstrap.min.js"></script> -->
+	<script src="/demo/bootstrap/js/bootstrap.min.js"></script>
 	<script src="/demo/dist/js/jquery.treegrid.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
-            $.get("/get-objectives", function(data) {
-                var tbody = $('table.tree tbody');
-                $.each(data, function(index, objective) {
-                    var tr = $('<tr>', {
-                    class: 'treegrid-' + objective.id + ' treegrid-parent-' + objective.parent_id
-                    }).appendTo(tbody);
-                    $('<td>').html(objective.name).appendTo(tr);
-                    $('<td>').html('Additional info').appendTo(tr);
-                    $('<td>').html('Additional add').appendTo(tr);
-                });
-                $('.tree').treegrid();
-            });
-        });
+				$('.tree').treegrid();
+			});
 	</script>
 @endpush
 @section('scripts')

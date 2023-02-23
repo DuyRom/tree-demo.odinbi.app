@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DemoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +22,6 @@ Route::get('/', function () {
 
 Route::view('/tree','demo.tree');
 
-Route::view('/main','main');
+Route::view('/objective','apps.home');
+
+Route::get('/get-objectives',[DemoController::class,'demo']);
